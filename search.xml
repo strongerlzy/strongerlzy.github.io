@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>php 安装 rabbitmq 扩展</title>
+      <link href="2020/11/13/rabbitmq/"/>
+      <url>2020/11/13/rabbitmq/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>PHP 使用 AMQP 协议来连接 Rabbitmq， AMQP 协议即 “Advanced Message Queuing Protocol ”，高级消息队列协议。<br>使 PHP 支持 AMQP 协议，需要安装：</p><ul><li>rabbitmq 的客户端 C 类库 ：rabbitmq-c</li><li>PHP 官方提供的 AMQP 扩展amqp-1.6.1<br>两者的关系是，PHP 扩展依赖 rabbitmq-c 类库。</li></ul></blockquote><hr><h3 id="第一步：安装依赖-rabbitmq-c-类库"><a href="#第一步：安装依赖-rabbitmq-c-类库" class="headerlink" title="第一步：安装依赖 rabbitmq-c 类库"></a>第一步：安装依赖 rabbitmq-c 类库</h3><p>下载地址：<a href="https://github.com/alanxz/rabbitmq-c/releases">https://github.com/alanxz/rabbitmq-c/releases</a></p><p>我这里下载版本：<a href="https://github.com/alanxz/rabbitmq-c/releases/download/v0.8.0/rabbitmq-c-0.8.0.tar.gz">https://github.com/alanxz/rabbitmq-c/releases/download/v0.8.0/rabbitmq-c-0.8.0.tar.gz</a> （注意：0.9.0 版本开始需要使用cmake 编译：不知道为什么我的mac cmake 会出现错误 Determining if the function clock_gettime exists in the rt failed ,因此选择了0.8.0 版本！）</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tar -xzvf abbitmq-c-0.8.0.tar.gz</span><br><span class="line"><span class="built_in">cd</span> rabbitmq-c-0.8.0</span><br><span class="line">./configure --prefix=/usr/<span class="built_in">local</span>/abbitmq-c-0.8.0 </span><br><span class="line">make&amp;&amp;make install</span><br></pre></td></tr></table></figure><p>若出现错误：make[1]: Nothing to be done for `all-am’.<br>这句提示是说明你已经编译好了，而且没有对代码进行任何改动。若想重新编译，可以先删除以前编译产生的目标文件：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make clean</span><br></pre></td></tr></table></figure><h3 id="第二步：安装-amqp-扩展"><a href="#第二步：安装-amqp-扩展" class="headerlink" title="第二步：安装 amqp 扩展"></a>第二步：安装 amqp 扩展</h3><p>下载地址：<a href="https://pecl.php.net/package/amqp%EF%BC%8C%E5%8F%AF%E4%B8%8B%E8%BD%BD%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC">https://pecl.php.net/package/amqp，可下载最新版本</a></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tar -xvf amqp-1.10.2.tgz </span><br><span class="line"><span class="built_in">cd</span> amqp-1.10.2</span><br><span class="line">/usr/<span class="built_in">local</span>/php/bin/phpize  <span class="comment">#用phpize生成编译文件，注意查看你的php在哪里</span></span><br><span class="line">./configure --with-php-config=/usr/<span class="built_in">local</span>/Cellar/php@7.2/7.2.33/bin/php-config --with-amqp --with-librabbitmq-dir=/usr/<span class="built_in">local</span>/rabbitmq-c-0.8.0</span><br><span class="line">make&amp;&amp;make install</span><br></pre></td></tr></table></figure><p>若出现错误：’amqp_ssl_socket.h’ file not found ，可以从rabbitmq-c-0.8.0/librabbitmq 目录下找到该文件拷贝到amqp的安装目录中，重新make 就可以</p><h3 id="第三步：配置-php-ini"><a href="#第三步：配置-php-ini" class="headerlink" title="第三步：配置 php.ini"></a>第三步：配置 php.ini</h3><p> php.ini 添加配置 extension=amqp.so</p><p>安装完成</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> rabbitmq </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>
