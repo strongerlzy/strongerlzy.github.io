@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   
   
-  <title>标签 | luoziyang</title>
+  <title>vim 常用命令 | luoziyang</title>
 
   
     <link rel="apple-touch-icon" href="/images/avatar2.jpeg">
@@ -85,21 +85,70 @@
 <!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
 
 
-  <!-- 标签页 url形式：https://yoursite/tags/ -->
-  <div class="container tag-index">
-    <div>
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/" rel="tag">array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/" rel="tag">mac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nosql/" rel="tag">nosql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/" rel="tag">php</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php-fpm/" rel="tag">php-fpm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rabbitmq/" rel="tag">rabbitmq</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/" rel="tag">redis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%82%E7%AD%89/" rel="tag">幂等</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%A5%E5%8F%A3/" rel="tag">接口</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E7%BB%84/" rel="tag">数组</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%93%E5%AD%98/" rel="tag">缓存</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BF%90%E7%BB%B4/" rel="tag">运维</a><span class="tag-list-count">2</span></li></ul>
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title">vim 常用命令</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="iconfont icon-updatetime" title="Update time"></i>
+          2020-11-27
+        </span>
+        
+      </div>
+      <div class="markdown-body">
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">dd:删除游标所在的一整行(常用)</span><br><span class="line">ndd:n为数字。删除光标所在的向下n行，例如20dd则是删除光标所在的向下20行</span><br><span class="line">d1G:删除光标所在到第一行的所有数据</span><br><span class="line">dG:删除光标所在到最后一行的所有数据</span><br><span class="line">d$:删除光标所在处，到该行的最后一个字符</span><br><span class="line">d0:那个是数字0,删除光标所在到该行的最前面的一个字符</span><br><span class="line">x,X:x向后删除一个字符(相当于[del]按键),X向前删除一个字符(相当于[backspace]即退格键)</span><br><span class="line">nx:n为数字，连续向后删除n个字符</span><br><span class="line">u 撤销</span><br><span class="line">Ctrl r (组合键) 反撤销</span><br><span class="line">:0 或 :1 跳到文件第一行</span><br><span class="line">:$ 跳到文件最后一行</span><br><span class="line">^ : 行首</span><br><span class="line">$ : 行尾</span><br><span class="line">i 在当前位置生前插入</span><br><span class="line">I 在当前行首插入</span><br><span class="line">a 在当前位置后插入</span><br><span class="line">A 在当前行尾插入</span><br><span class="line">o 在当前行之后插入一行</span><br><span class="line">O 在当前行之前插入一行</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">:w 保存文件但不退出vi</span><br><span class="line">:w file 将修改另外保存到file中，不退出vi</span><br><span class="line">:w! 强制保存，不推出vi</span><br><span class="line">:wq 保存文件并退出vi</span><br><span class="line">:wq! 强制保存文件，并退出vi</span><br><span class="line">q: 不保存文件，退出vi</span><br><span class="line">:q! 不保存文件，强制退出vi</span><br><span class="line">:e! 放弃所有修改，从上次保存文件开始再编辑</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;text　　查找text，按n健查找下一个，按N健查找前一个。</span><br><span class="line">?text　　查找text，反向查找，按n健查找下一个，按N健查找前一个。</span><br></pre></td></tr></table></figure>
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2020/11/17/mysql-index/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>Prev</span>
+              </a>
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              <i class="iconfont icon-updatetime" title="Update time"></i>
+              2020-11-27
+            </span>
+            
+          </div>
+          <div class="post-foot-prev">
+            
+              <a href="/2020/11/27/xdebug/" target="_self">
+                <span>Next</span>
+                <i class="iconfont icon-chevronright"></i>
+              </a>
+            
+          </div>
+        </div>
+      
     </div>
+    
+
+    
+      <div class="comments-container">
+        
+
+
+
+
+
+      </div>
+    
   </div>
-  
 
-  
-
-  
-
-  
-
-  
 
         <div class="footer">
   <div class="social">

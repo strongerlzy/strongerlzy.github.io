@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   
   
-  <title>标签 | luoziyang</title>
+  <title>开启 php-fpm 状态页 | luoziyang</title>
 
   
     <link rel="apple-touch-icon" href="/images/avatar2.jpeg">
@@ -85,21 +85,152 @@
 <!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
 
 
-  <!-- 标签页 url形式：https://yoursite/tags/ -->
-  <div class="container tag-index">
-    <div>
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/" rel="tag">array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/" rel="tag">mac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nosql/" rel="tag">nosql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/" rel="tag">php</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php-fpm/" rel="tag">php-fpm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rabbitmq/" rel="tag">rabbitmq</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/" rel="tag">redis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%82%E7%AD%89/" rel="tag">幂等</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%A5%E5%8F%A3/" rel="tag">接口</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E7%BB%84/" rel="tag">数组</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%93%E5%AD%98/" rel="tag">缓存</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BF%90%E7%BB%B4/" rel="tag">运维</a><span class="tag-list-count">2</span></li></ul>
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title">开启 php-fpm 状态页</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="iconfont icon-updatetime" title="Update time"></i>
+          2020-12-04
+        </span>
+        
+              <span class="post-tags">
+                <i class="iconfont icon-tags" title="Tags"></i>
+                
+                <span class="span--tag">
+                  <a href="/tags/php/" title="php">
+                    <b>#</b> php
+                  </a>
+                </span>
+                
+                <span class="span--tag">
+                  <a href="/tags/%E8%BF%90%E7%BB%B4/" title="运维">
+                    <b>#</b> 运维
+                  </a>
+                </span>
+                
+                <span class="span--tag">
+                  <a href="/tags/php-fpm/" title="php-fpm">
+                    <b>#</b> php-fpm
+                  </a>
+                </span>
+                
+              </span>
+          
+      </div>
+      <div class="markdown-body">
+        <p>php-fpm 内建了状态也，可以通过该状态也了解和监控 php-fpm 的情况 </p>
+<h4 id="1-php-fpm"><a href="#1-php-fpm" class="headerlink" title="1.php-fpm"></a>1.php-fpm</h4><p>在php-fpm.conf 文件末尾添加配置项 pm.status_path = /status<br>（注意：一定要添加到最后一行，不然会出现错误：unknown entry ‘pm.status_path’）</p>
+<h4 id="2-nginx"><a href="#2-nginx" class="headerlink" title="2.nginx"></a>2.nginx</h4><p>nginx 配置添加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">location ~ ^&#x2F;(status|ping)$ &#123;</span><br><span class="line">    fastcgi_pass   127.0.0.1:9000;</span><br><span class="line">    fastcgi_param  SCRIPT_FILENAME $fastcgi_script_name;</span><br><span class="line">    include        fastcgi_params;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-重启-nginx-和-php-fpm"><a href="#3-重启-nginx-和-php-fpm" class="headerlink" title="3.重启 nginx 和 php-fpm"></a>3.重启 nginx 和 php-fpm</h4><p>生效后浏览器访问  localhost:8080/status  即可看到如下信息：<br>(8080 是我自己的端口)</p>
+<p><img src="/images/img_7.png"> </p>
+<h4 id="4-参数解析"><a href="#4-参数解析" class="headerlink" title="4.参数解析"></a>4.参数解析</h4><ul>
+<li>pool  – fpm池子名称，大多数为www </li>
+<li>process manager  – 进程管理方式,值：static, dynamic or ondemand. dynamic </li>
+<li>start time  – 启动日期,如果reload了php-fpm，时间会更新 </li>
+<li>start since  – 运行时长 </li>
+<li>accepted conn  – 当前池子接受的请求数 </li>
+<li>listen queue  – 请求等待队列，如果这个值不为0，那么要增加FPM的进程数量 </li>
+<li>max listen queue  – 请求等待队列最高的数量 </li>
+<li>listen queue len  – socket等待队列长度 </li>
+<li>idle processes  – 空闲进程数量 </li>
+<li>active processes  – 活跃进程数量 </li>
+<li>total processes  – 总进程数量 </li>
+<li>max active processes  – 最大的活跃进程数量（FPM启动开始算） </li>
+<li>max children reached  - 进程最大数量限制的次数，如果这个数量不为0，那说明你的最大进程数量太小了，请改大一点。</li>
+<li>slow requests  – 启用了php-fpm </li>
+<li>slow-log - 缓慢请求的数量</li>
+</ul>
+
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2020/11/27/mac/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>Prev</span>
+              </a>
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              <i class="iconfont icon-updatetime" title="Update time"></i>
+              2020-12-04
+            </span>
+            
+                  <span class="post-tags">
+                    <i class="iconfont icon-tags" title="Tags"></i>
+                    
+                    <span class="span--tag">
+                      <a href="/tags/php/" title="php">
+                        <b>#</b> php
+                      </a>
+                    </span>
+                    
+                    <span class="span--tag">
+                      <a href="/tags/%E8%BF%90%E7%BB%B4/" title="运维">
+                        <b>#</b> 运维
+                      </a>
+                    </span>
+                    
+                    <span class="span--tag">
+                      <a href="/tags/php-fpm/" title="php-fpm">
+                        <b>#</b> php-fpm
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+          </div>
+          <div class="post-foot-prev">
+            
+              <a href="/2020/12/04/nohup/" target="_self">
+                <span>Next</span>
+                <i class="iconfont icon-chevronright"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+    </div>
+    
+  <div class="post-catalog" id="catalog">
+    <div class="title">Contents</div>
+    <div class="catalog-content">
+      <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-php-fpm"><span class="toc-text">1.php-fpm</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-nginx"><span class="toc-text">2.nginx</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E9%87%8D%E5%90%AF-nginx-%E5%92%8C-php-fpm"><span class="toc-text">3.重启 nginx 和 php-fpm</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90"><span class="toc-text">4.参数解析</span></a></li></ol>
     </div>
   </div>
-  
 
   
+<script src="/js/catalog.js"></script>
 
-  
 
-  
 
-  
+
+    
+      <div class="comments-container">
+        
+
+
+
+
+
+      </div>
+    
+  </div>
+
 
         <div class="footer">
   <div class="social">

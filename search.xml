@@ -27,13 +27,9 @@
 ]]></content>
       <categories>
         <category>php</category>
-        <category>Sports</category>
-        <category>Baseball</category>
       </categories>
       <tags>
         <tag>rabbitmq</tag>
-        <tag>Sports</tag>
-        <tag>Baseball</tag>
       </tags>
   </entry>
   <entry>
@@ -96,5 +92,175 @@
 </li>
 </ul>
 ]]></content>
+  </entry>
+  <entry>
+    <title>mac</title>
+    <url>/2020/11/27/mac/</url>
+    <content><![CDATA[<h3 id="chorme-常用快捷键"><a href="#chorme-常用快捷键" class="headerlink" title="chorme 常用快捷键"></a>chorme 常用快捷键</h3><p>cmmmand + , : 打开设置<br>command + t : 打开新标签页<br>command + r : 刷新当前页</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>php7.2 安装 xdebug 2.7</title>
+    <url>/2020/11/27/xdebug/</url>
+    <content><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">wget https:&#x2F;&#x2F;xdebug.org&#x2F;files&#x2F;xdebug-2.7.2.tgz</span><br><span class="line">tar -xf xdebug-2.7.2.tgz</span><br><span class="line">cd xdebug-2.7.2</span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;Cellar&#x2F;php@7.2&#x2F;7.2.33&#x2F;bin&#x2F;phpize</span><br><span class="line">.&#x2F;configure --enable-xdebug --with-php-config&#x3D;&#x2F;usr&#x2F;local&#x2F;Cellar&#x2F;php@7.2&#x2F;7.2.33&#x2F;bin&#x2F;php-config</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+
+<p>php.ini 添加 xdebug 配置项</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[xdebug]</span><br><span class="line">zend_extension&#x3D;xdebug.so</span><br><span class="line">xdebug.profiler_enable&#x3D;On</span><br><span class="line">xdebug.profiler_enable_trigger&#x3D;Off</span><br><span class="line">xdebug.profiler_output_dir&#x3D;&quot;&#x2F;var&#x2F;tmp&#x2F;&quot;</span><br><span class="line">xdebug.trace_output_dir&#x3D;&quot;&#x2F;var&#x2F;tmp&#x2F;&quot;</span><br><span class="line">xdebug.profiler_output_name&#x3D;&quot;xdebug.cache.%t-%s&quot;</span><br><span class="line">xdebug.profiler_append&#x3D;Off</span><br><span class="line">xdebug.remote_enable&#x3D;On</span><br><span class="line">xdebug.remote_port&#x3D;9001</span><br><span class="line">xdebug.remote_host&#x3D;localhost</span><br><span class="line">xdebug.remote_handler&#x3D;&quot;dbgp&quot;</span><br><span class="line">xdebug.idekey&#x3D;PHPSTROM</span><br></pre></td></tr></table></figure>]]></content>
+  </entry>
+  <entry>
+    <title>vim 常用命令</title>
+    <url>/2020/11/27/vim/</url>
+    <content><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dd:删除游标所在的一整行(常用)</span><br><span class="line">ndd:n为数字。删除光标所在的向下n行，例如20dd则是删除光标所在的向下20行</span><br><span class="line">d1G:删除光标所在到第一行的所有数据</span><br><span class="line">dG:删除光标所在到最后一行的所有数据</span><br><span class="line">d$:删除光标所在处，到该行的最后一个字符</span><br><span class="line">d0:那个是数字0,删除光标所在到该行的最前面的一个字符</span><br><span class="line">x,X:x向后删除一个字符(相当于[del]按键),X向前删除一个字符(相当于[backspace]即退格键)</span><br><span class="line">nx:n为数字，连续向后删除n个字符</span><br><span class="line">u 撤销</span><br><span class="line">Ctrl r (组合键) 反撤销</span><br><span class="line">:0 或 :1 跳到文件第一行</span><br><span class="line">:$ 跳到文件最后一行</span><br><span class="line">^ : 行首</span><br><span class="line">$ : 行尾</span><br><span class="line">i 在当前位置生前插入</span><br><span class="line">I 在当前行首插入</span><br><span class="line">a 在当前位置后插入</span><br><span class="line">A 在当前行尾插入</span><br><span class="line">o 在当前行之后插入一行</span><br><span class="line">O 在当前行之前插入一行</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">:w 保存文件但不退出vi</span><br><span class="line">:w file 将修改另外保存到file中，不退出vi</span><br><span class="line">:w! 强制保存，不推出vi</span><br><span class="line">:wq 保存文件并退出vi</span><br><span class="line">:wq! 强制保存文件，并退出vi</span><br><span class="line">q: 不保存文件，退出vi</span><br><span class="line">:q! 不保存文件，强制退出vi</span><br><span class="line">:e! 放弃所有修改，从上次保存文件开始再编辑</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;text　　查找text，按n健查找下一个，按N健查找前一个。</span><br><span class="line">?text　　查找text，反向查找，按n健查找下一个，按N健查找前一个。</span><br></pre></td></tr></table></figure>]]></content>
+  </entry>
+  <entry>
+    <title>开启 php-fpm 状态页</title>
+    <url>/2020/12/04/php-fpm/</url>
+    <content><![CDATA[<p>php-fpm 内建了状态也，可以通过该状态也了解和监控 php-fpm 的情况 </p>
+<h4 id="1-php-fpm"><a href="#1-php-fpm" class="headerlink" title="1.php-fpm"></a>1.php-fpm</h4><p>在php-fpm.conf 文件末尾添加配置项 pm.status_path = /status<br>（注意：一定要添加到最后一行，不然会出现错误：unknown entry ‘pm.status_path’）</p>
+<h4 id="2-nginx"><a href="#2-nginx" class="headerlink" title="2.nginx"></a>2.nginx</h4><p>nginx 配置添加</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">location ~ ^&#x2F;(status|ping)$ &#123;</span><br><span class="line">    fastcgi_pass   127.0.0.1:9000;</span><br><span class="line">    fastcgi_param  SCRIPT_FILENAME $fastcgi_script_name;</span><br><span class="line">    include        fastcgi_params;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-重启-nginx-和-php-fpm"><a href="#3-重启-nginx-和-php-fpm" class="headerlink" title="3.重启 nginx 和 php-fpm"></a>3.重启 nginx 和 php-fpm</h4><p>生效后浏览器访问  localhost:8080/status  即可看到如下信息：<br>(8080 是我自己的端口)</p>
+<p><img src="/images/img_7.png"> </p>
+<h4 id="4-参数解析"><a href="#4-参数解析" class="headerlink" title="4.参数解析"></a>4.参数解析</h4><ul>
+<li>pool  – fpm池子名称，大多数为www </li>
+<li>process manager  – 进程管理方式,值：static, dynamic or ondemand. dynamic </li>
+<li>start time  – 启动日期,如果reload了php-fpm，时间会更新 </li>
+<li>start since  – 运行时长 </li>
+<li>accepted conn  – 当前池子接受的请求数 </li>
+<li>listen queue  – 请求等待队列，如果这个值不为0，那么要增加FPM的进程数量 </li>
+<li>max listen queue  – 请求等待队列最高的数量 </li>
+<li>listen queue len  – socket等待队列长度 </li>
+<li>idle processes  – 空闲进程数量 </li>
+<li>active processes  – 活跃进程数量 </li>
+<li>total processes  – 总进程数量 </li>
+<li>max active processes  – 最大的活跃进程数量（FPM启动开始算） </li>
+<li>max children reached  - 进程最大数量限制的次数，如果这个数量不为0，那说明你的最大进程数量太小了，请改大一点。</li>
+<li>slow requests  – 启用了php-fpm </li>
+<li>slow-log - 缓慢请求的数量</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>php</tag>
+        <tag>运维</tag>
+        <tag>php-fpm</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>nohup 命令</title>
+    <url>/2020/12/04/nohup/</url>
+    <content><![CDATA[<p>nohup : no hang up 的缩写 不挂断的意思，一般与 &amp; 同时使用</p>
+<h4 id="nohup-与-amp-区别"><a href="#nohup-与-amp-区别" class="headerlink" title="nohup 与 &amp; 区别"></a>nohup 与 &amp; 区别</h4><ul>
+<li><p>&amp; ： 指在后台运行</p>
+</li>
+<li><p>nohup ： 不挂断的运行，注意并没有后台运行的功能，，就是指，用nohup运行命令可以使命令永久的执行下去，和用户终端没有关系，例如我们断开SSH连接都不会影响他的运行，注意了nohup没有后台运行的意思；&amp;才是后台运行</p>
+</li>
+</ul>
+<ol>
+<li>sh test.sh &amp;<br>将sh test.sh任务放到后台 ，即使关闭xshell退出当前session依然继续运行，但标准输出和标准错误信息会丢失（缺少的日志的输出）<br>将sh test.sh任务放到后台 ，关闭xshell，对应的任务也跟着停止。</li>
+<li>nohup sh test.sh<br>将sh test.sh任务放到后台，关闭标准输入，终端不再能够接收任何输入（标准输入），重定向标准输出和标准错误到当前目录下的nohup.out文件，即使关闭xshell退出当前session依然继续运行。</li>
+<li>nohup sh test.sh  &amp;<br>将sh test.sh任务放到后台，但是依然可以使用标准输入，终端能够接收任何输入，重定向标准输出和标准错误到当前目录下的nohup.out文件，即使关闭xshell退出当前session依然继续运行。</li>
+</ol>
+]]></content>
+      <tags>
+        <tag>运维</tag>
+        <tag>linux</tag>
+        <tag>mac</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>php 数组总结</title>
+    <url>/2020/12/09/php%E6%95%B0%E7%BB%84%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<ul>
+<li><p>sort():按值升序排序 （健名重置）</p>
+</li>
+<li><p>rsort():按值降序排序 （健名重置）</p>
+</li>
+<li><p>ksort():按键名升序排序 （保留键名）</p>
+</li>
+<li><p>krsort():按健名降序排序 （保留键名）</p>
+</li>
+<li><p>asort():关联数组 键值 升序 （保留键名）</p>
+</li>
+<li><p>arsort():关联数组 键值 降序 （保留键名）</p>
+</li>
+<li><p>usort(): 自定义函数对数组进行排序 （键名重置）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function my_sort3($a, $b) &#123;</span><br><span class="line">    if ($a &#x3D;&#x3D; $b) return 0;</span><br><span class="line">    return ($a &lt; $b) ? 1 : -1;</span><br><span class="line">&#125;</span><br><span class="line">$a &#x3D; array(4, 2, 8, 6);</span><br><span class="line">$a &#x3D; array(&#39;a&#39; &#x3D;&gt; 4, &#39;b&#39; &#x3D;&gt; 2, &#39;c&#39; &#x3D;&gt; 8, &#39;d&#39; &#x3D;&gt; 6);</span><br><span class="line">usort($a, &quot;my_sort3&quot;);</span><br><span class="line">print_r($a);</span><br><span class="line">输出：</span><br><span class="line">Array</span><br><span class="line">(</span><br><span class="line">    [0] &#x3D;&gt; 8</span><br><span class="line">    [1] &#x3D;&gt; 6</span><br><span class="line">    [2] &#x3D;&gt; 4</span><br><span class="line">    [3] &#x3D;&gt; 2</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>uasort(): 自定义函数 键值排序 （保留键名）</p>
+</li>
+<li><p>uksort(): 自定义函数 键名排序</p>
+</li>
+<li><p>array_multisort(array1,sorting order,sorting type,array2,array3…): 对多个数组进行排序，可指定排序顺序和类型<br>字符串键名将被保留，但是数字键名将被重新索引，数组类型必须相同</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$a1 &#x3D; array(1, 30, 15, 7, 25);</span><br><span class="line">$a2 &#x3D; array(4, 30, 20, 41, 66);</span><br><span class="line">array_multisort($a1, SORT_DESC, SORT_NUMERIC, $a2, SORT_DESC, SORT_NUMERIC);</span><br><span class="line">print_r($a1);</span><br><span class="line">print_r($a2);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>natsort():函数用”自然排序”算法对数组进行排序。键值保留它们原始的键名。(区分大小写)<br>在自然排序算法中，数字 2 小于 数字 10。在计算机排序算法中，10 小于 2，因为 “10” 中的第一个数字小于 2</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$temp_files &#x3D; array(&quot;temp15.txt&quot;, &quot;temp10.txt&quot;, &quot;temp1.txt&quot;, &quot;temp22.txt&quot;, &quot;temp2.txt&quot;);</span><br><span class="line">sort($temp_files);</span><br><span class="line">echo &quot;标准排序：&quot;;</span><br><span class="line">print_r($temp_files);</span><br><span class="line">echo &quot;&lt;br&gt;&quot;;</span><br><span class="line">natsort($temp_files);</span><br><span class="line">echo &quot;自然排序：&quot;;</span><br><span class="line">print_r($temp_files);</span><br><span class="line">输出：</span><br><span class="line">标准排序：</span><br><span class="line">Array</span><br><span class="line">(</span><br><span class="line">    [0] &#x3D;&gt; temp1.txt</span><br><span class="line">    [1] &#x3D;&gt; temp10.txt</span><br><span class="line">    [2] &#x3D;&gt; temp15.txt</span><br><span class="line">    [3] &#x3D;&gt; temp2.txt</span><br><span class="line">    [4] &#x3D;&gt; temp22.txt</span><br><span class="line">)</span><br><span class="line">自然排序：</span><br><span class="line">Array</span><br><span class="line">(</span><br><span class="line">    [0] &#x3D;&gt; temp1.txt</span><br><span class="line">    [3] &#x3D;&gt; temp2.txt</span><br><span class="line">    [1] &#x3D;&gt; temp10.txt</span><br><span class="line">    [2] &#x3D;&gt; temp15.txt</span><br><span class="line">    [4] &#x3D;&gt; temp22.txt</span><br><span class="line">)</span><br></pre></td></tr></table></figure></li>
+<li><p>natcasesort():函数用”自然排序”算法对数组进行排序。键值保留它们原始的键名。(不区分大小写)<br>在自然排序算法中，数字 2 小于 数字 10。在计算机排序算法中，10 小于 2，因为 “10” 中的第一个数字小于 2</p>
+</li>
+<li><p>shuffle(): 打乱数组 （键名重置）</p>
+</li>
+<li><p>ange(low,high,step): 创建指定返回的数组，可选 step 间隔</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$number &#x3D; range(0,50,10);</span><br><span class="line">print_r ($number);</span><br><span class="line">输出：</span><br><span class="line">Array</span><br><span class="line">(</span><br><span class="line">    [0] &#x3D;&gt; 0</span><br><span class="line">    [1] &#x3D;&gt; 10</span><br><span class="line">    [2] &#x3D;&gt; 20</span><br><span class="line">    [3] &#x3D;&gt; 30</span><br><span class="line">    [4] &#x3D;&gt; 40</span><br><span class="line">    [5] &#x3D;&gt; 50</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>array_unique(): 返回 删除重复值的数组</p>
+</li>
+<li><p>array_values(): 返回 数组中的所有的值</p>
+</li>
+<li><p>array_keys()：返回 数组中的所有的键名</p>
+</li>
+<li><p>key(): 返回 数组当前指针指向的键名</p>
+</li>
+<li><p>current(): 返回 数组当前指向的值</p>
+</li>
+<li><p>next(): 指针下移，返回当前值</p>
+</li>
+<li><p>prev(): 指针上移，返回当前值</p>
+</li>
+<li><p>reset(): 指针移到首位，返回当前值</p>
+</li>
+<li><p>end(): 指针移到末尾，返回当前值</p>
+</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>php</tag>
+        <tag>数组</tag>
+        <tag>array</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>redis 的淘汰机制</title>
+    <url>/2020/12/07/redis-%E6%B7%98%E6%B1%B0%E6%9C%BA%E5%88%B6/</url>
+    <content><![CDATA[<h4 id="过期策略"><a href="#过期策略" class="headerlink" title="过期策略"></a>过期策略</h4><ul>
+<li>定期删除：每隔100ms 随机抽取一些设置了过期时间的key,检查是否过期，过期直接删除</li>
+<li>惰性删除：在获取某个key 的时候，redis 检查一下，如果该key 设置了过期时间则判断该key的是否过期，过期后直接删除，不返回任何东西</li>
+</ul>
+<h4 id="淘汰机制"><a href="#淘汰机制" class="headerlink" title="淘汰机制"></a>淘汰机制</h4><p>redis 内存块耗尽时，redis会启动淘汰机制，将部分key清掉腾出内存</p>
+<p>6 中数据淘汰策略，可在redis.conf 中配置：maxmemory-policy noeviction</p>
+<ul>
+<li>noeviction：禁止驱逐数据。默认配置都是这个。当内存使用达到阀值的时候，所有引起申请内存的命令都会报错。</li>
+<li>volatile-lru：从设置了过期时间的数据集中挑选最近最少使用的数据淘汰。</li>
+<li>volatile-ttl：从已设置了过期时间的数据集中挑选即将要过期的数据淘汰。</li>
+<li>volatile-random：从已设置了过期时间的数据集中任意选择数据淘汰。</li>
+<li>allkeys-lru：从数据集中挑选最近最少使用的数据淘汰。</li>
+<li>allkeys-random：从数据集中任意选择数据淘汰。<br>当Redis确定好要驱逐某个键值对后，会删除这个数据，并将这个数据变更消息同步到本地和从机。</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>redis</tag>
+        <tag>缓存</tag>
+        <tag>nosql</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>接口幂等性设计</title>
+    <url>/2020/12/07/%E6%8E%A5%E5%8F%A3%E5%B9%82%E7%AD%89%E6%80%A7%E8%AE%BE%E8%AE%A1/</url>
+    <content><![CDATA[<p>接口幂等性就是用户对于同一操作发起的一次请求或者多次请求的结果是一致的，不会因为多次点击而产生了副作用。</p>
+]]></content>
+      <tags>
+        <tag>接口</tag>
+        <tag>幂等</tag>
+      </tags>
   </entry>
 </search>

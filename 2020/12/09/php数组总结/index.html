@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   
   
-  <title>标签 | luoziyang</title>
+  <title>php 数组总结 | luoziyang</title>
 
   
     <link rel="apple-touch-icon" href="/images/avatar2.jpeg">
@@ -85,21 +85,162 @@
 <!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
 
 
-  <!-- 标签页 url形式：https://yoursite/tags/ -->
-  <div class="container tag-index">
-    <div>
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/" rel="tag">array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/" rel="tag">mac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nosql/" rel="tag">nosql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/" rel="tag">php</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php-fpm/" rel="tag">php-fpm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rabbitmq/" rel="tag">rabbitmq</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/" rel="tag">redis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B9%82%E7%AD%89/" rel="tag">幂等</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%A5%E5%8F%A3/" rel="tag">接口</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E7%BB%84/" rel="tag">数组</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%93%E5%AD%98/" rel="tag">缓存</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BF%90%E7%BB%B4/" rel="tag">运维</a><span class="tag-list-count">2</span></li></ul>
+
+  
+
+  
+
+  
+
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title">php 数组总结</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="iconfont icon-updatetime" title="Update time"></i>
+          2020-12-09
+        </span>
+        
+              <span class="post-tags">
+                <i class="iconfont icon-tags" title="Tags"></i>
+                
+                <span class="span--tag">
+                  <a href="/tags/php/" title="php">
+                    <b>#</b> php
+                  </a>
+                </span>
+                
+                <span class="span--tag">
+                  <a href="/tags/%E6%95%B0%E7%BB%84/" title="数组">
+                    <b>#</b> 数组
+                  </a>
+                </span>
+                
+                <span class="span--tag">
+                  <a href="/tags/array/" title="array">
+                    <b>#</b> array
+                  </a>
+                </span>
+                
+              </span>
+          
+      </div>
+      <div class="markdown-body">
+        <ul>
+<li><p>sort():按值升序排序 （健名重置）</p>
+</li>
+<li><p>rsort():按值降序排序 （健名重置）</p>
+</li>
+<li><p>ksort():按键名升序排序 （保留键名）</p>
+</li>
+<li><p>krsort():按健名降序排序 （保留键名）</p>
+</li>
+<li><p>asort():关联数组 键值 升序 （保留键名）</p>
+</li>
+<li><p>arsort():关联数组 键值 降序 （保留键名）</p>
+</li>
+<li><p>usort(): 自定义函数对数组进行排序 （键名重置）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">function my_sort3($a, $b) &#123;</span><br><span class="line">    if ($a &#x3D;&#x3D; $b) return 0;</span><br><span class="line">    return ($a &lt; $b) ? 1 : -1;</span><br><span class="line">&#125;</span><br><span class="line">$a &#x3D; array(4, 2, 8, 6);</span><br><span class="line">$a &#x3D; array(&#39;a&#39; &#x3D;&gt; 4, &#39;b&#39; &#x3D;&gt; 2, &#39;c&#39; &#x3D;&gt; 8, &#39;d&#39; &#x3D;&gt; 6);</span><br><span class="line">usort($a, &quot;my_sort3&quot;);</span><br><span class="line">print_r($a);</span><br><span class="line">输出：</span><br><span class="line">Array</span><br><span class="line">(</span><br><span class="line">    [0] &#x3D;&gt; 8</span><br><span class="line">    [1] &#x3D;&gt; 6</span><br><span class="line">    [2] &#x3D;&gt; 4</span><br><span class="line">    [3] &#x3D;&gt; 2</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>uasort(): 自定义函数 键值排序 （保留键名）</p>
+</li>
+<li><p>uksort(): 自定义函数 键名排序</p>
+</li>
+<li><p>array_multisort(array1,sorting order,sorting type,array2,array3…): 对多个数组进行排序，可指定排序顺序和类型<br>字符串键名将被保留，但是数字键名将被重新索引，数组类型必须相同</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$a1 &#x3D; array(1, 30, 15, 7, 25);</span><br><span class="line">$a2 &#x3D; array(4, 30, 20, 41, 66);</span><br><span class="line">array_multisort($a1, SORT_DESC, SORT_NUMERIC, $a2, SORT_DESC, SORT_NUMERIC);</span><br><span class="line">print_r($a1);</span><br><span class="line">print_r($a2);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>natsort():函数用”自然排序”算法对数组进行排序。键值保留它们原始的键名。(区分大小写)<br>在自然排序算法中，数字 2 小于 数字 10。在计算机排序算法中，10 小于 2，因为 “10” 中的第一个数字小于 2</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">$temp_files &#x3D; array(&quot;temp15.txt&quot;, &quot;temp10.txt&quot;, &quot;temp1.txt&quot;, &quot;temp22.txt&quot;, &quot;temp2.txt&quot;);</span><br><span class="line">sort($temp_files);</span><br><span class="line">echo &quot;标准排序：&quot;;</span><br><span class="line">print_r($temp_files);</span><br><span class="line">echo &quot;&lt;br&gt;&quot;;</span><br><span class="line">natsort($temp_files);</span><br><span class="line">echo &quot;自然排序：&quot;;</span><br><span class="line">print_r($temp_files);</span><br><span class="line">输出：</span><br><span class="line">标准排序：</span><br><span class="line">Array</span><br><span class="line">(</span><br><span class="line">    [0] &#x3D;&gt; temp1.txt</span><br><span class="line">    [1] &#x3D;&gt; temp10.txt</span><br><span class="line">    [2] &#x3D;&gt; temp15.txt</span><br><span class="line">    [3] &#x3D;&gt; temp2.txt</span><br><span class="line">    [4] &#x3D;&gt; temp22.txt</span><br><span class="line">)</span><br><span class="line">自然排序：</span><br><span class="line">Array</span><br><span class="line">(</span><br><span class="line">    [0] &#x3D;&gt; temp1.txt</span><br><span class="line">    [3] &#x3D;&gt; temp2.txt</span><br><span class="line">    [1] &#x3D;&gt; temp10.txt</span><br><span class="line">    [2] &#x3D;&gt; temp15.txt</span><br><span class="line">    [4] &#x3D;&gt; temp22.txt</span><br><span class="line">)</span><br></pre></td></tr></table></figure></li>
+<li><p>natcasesort():函数用”自然排序”算法对数组进行排序。键值保留它们原始的键名。(不区分大小写)<br>在自然排序算法中，数字 2 小于 数字 10。在计算机排序算法中，10 小于 2，因为 “10” 中的第一个数字小于 2</p>
+</li>
+<li><p>shuffle(): 打乱数组 （键名重置）</p>
+</li>
+<li><p>ange(low,high,step): 创建指定返回的数组，可选 step 间隔</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$number &#x3D; range(0,50,10);</span><br><span class="line">print_r ($number);</span><br><span class="line">输出：</span><br><span class="line">Array</span><br><span class="line">(</span><br><span class="line">    [0] &#x3D;&gt; 0</span><br><span class="line">    [1] &#x3D;&gt; 10</span><br><span class="line">    [2] &#x3D;&gt; 20</span><br><span class="line">    [3] &#x3D;&gt; 30</span><br><span class="line">    [4] &#x3D;&gt; 40</span><br><span class="line">    [5] &#x3D;&gt; 50</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>array_unique(): 返回 删除重复值的数组</p>
+</li>
+<li><p>array_values(): 返回 数组中的所有的值</p>
+</li>
+<li><p>array_keys()：返回 数组中的所有的键名</p>
+</li>
+<li><p>key(): 返回 数组当前指针指向的键名</p>
+</li>
+<li><p>current(): 返回 数组当前指向的值</p>
+</li>
+<li><p>next(): 指针下移，返回当前值</p>
+</li>
+<li><p>prev(): 指针上移，返回当前值</p>
+</li>
+<li><p>reset(): 指针移到首位，返回当前值</p>
+</li>
+<li><p>end(): 指针移到末尾，返回当前值</p>
+</li>
+</ul>
+
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
+            
+              <a href="/2020/12/07/%E6%8E%A5%E5%8F%A3%E5%B9%82%E7%AD%89%E6%80%A7%E8%AE%BE%E8%AE%A1/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>Prev</span>
+              </a>
+            
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              <i class="iconfont icon-updatetime" title="Update time"></i>
+              2020-12-09
+            </span>
+            
+                  <span class="post-tags">
+                    <i class="iconfont icon-tags" title="Tags"></i>
+                    
+                    <span class="span--tag">
+                      <a href="/tags/php/" title="php">
+                        <b>#</b> php
+                      </a>
+                    </span>
+                    
+                    <span class="span--tag">
+                      <a href="/tags/%E6%95%B0%E7%BB%84/" title="数组">
+                        <b>#</b> 数组
+                      </a>
+                    </span>
+                    
+                    <span class="span--tag">
+                      <a href="/tags/array/" title="array">
+                        <b>#</b> array
+                      </a>
+                    </span>
+                    
+                  </span>
+              
+          </div>
+          <div class="post-foot-prev">
+            
+          </div>
+        </div>
+      
     </div>
+    
+
+    
+      <div class="comments-container">
+        
+
+
+
+
+
+      </div>
+    
   </div>
-  
 
-  
-
-  
-
-  
-
-  
 
         <div class="footer">
   <div class="social">
