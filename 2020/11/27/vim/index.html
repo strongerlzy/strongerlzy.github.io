@@ -12,7 +12,7 @@
 
 
 
-<title>Hello World | Hexo</title>
+<title>vim 常用命令 | Hexo</title>
 
 
 
@@ -107,73 +107,11 @@
             <div class="container">
     
     
-        <div class="post-toc">
-    <div class="tocbot-list">
-    </div>
-    <div class="tocbot-list-menu">
-        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
-        <a onclick="go_top()">Back to top</a>
-        <a onclick="go_bottom()">Go to bottom</a>
-    </div>
-</div>
-
-<script>
-    document.ready(
-        function () {
-            tocbot.init({
-                tocSelector: '.tocbot-list',
-                contentSelector: '.post-content',
-                headingSelector: 'h1, h2, h3, h4, h5',
-                collapseDepth: 1,
-                orderedList: false,
-                scrollSmooth: true,
-            })
-        }
-    )
-
-    function expand_toc() {
-        var b = document.querySelector(".tocbot-toc-expand");
-        tocbot.init({
-            tocSelector: '.tocbot-list',
-            contentSelector: '.post-content',
-            headingSelector: 'h1, h2, h3, h4, h5',
-            collapseDepth: 6,
-            orderedList: false,
-            scrollSmooth: true,
-        });
-        b.setAttribute("onclick", "collapse_toc()");
-        b.innerHTML = "Collapse all"
-    }
-
-    function collapse_toc() {
-        var b = document.querySelector(".tocbot-toc-expand");
-        tocbot.init({
-            tocSelector: '.tocbot-list',
-            contentSelector: '.post-content',
-            headingSelector: 'h1, h2, h3, h4, h5',
-            collapseDepth: 1,
-            orderedList: false,
-            scrollSmooth: true,
-        });
-        b.setAttribute("onclick", "expand_toc()");
-        b.innerHTML = "Expand all"
-    }
-
-    function go_top() {
-        window.scrollTo(0, 0);
-    }
-
-    function go_bottom() {
-        window.scrollTo(0, document.body.scrollHeight);
-    }
-
-</script>
-    
 
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">Hello World</h1>
+            <h1 class="post-title">vim 常用命令</h1>
             
                 <div class="post-meta">
                     
@@ -182,7 +120,7 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">December 10, 2020&nbsp;&nbsp;13:52:19</a>
+                        Date: <a href="#">November 27, 2020&nbsp;&nbsp;13:42:53</a>
                         </span>
                     
                     
@@ -191,20 +129,7 @@
         </header>
 
         <div class="post-content">
-            <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
+            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">dd:删除游标所在的一整行(常用)</span><br><span class="line">ndd:n为数字。删除光标所在的向下n行，例如20dd则是删除光标所在的向下20行</span><br><span class="line">d1G:删除光标所在到第一行的所有数据</span><br><span class="line">dG:删除光标所在到最后一行的所有数据</span><br><span class="line">d$:删除光标所在处，到该行的最后一个字符</span><br><span class="line">d0:那个是数字0,删除光标所在到该行的最前面的一个字符</span><br><span class="line">x,X:x向后删除一个字符(相当于[del]按键),X向前删除一个字符(相当于[backspace]即退格键)</span><br><span class="line">nx:n为数字，连续向后删除n个字符</span><br><span class="line">u 撤销</span><br><span class="line">Ctrl r (组合键) 反撤销</span><br><span class="line">:0 或 :1 跳到文件第一行</span><br><span class="line">:$ 跳到文件最后一行</span><br><span class="line">^ : 行首</span><br><span class="line">$ : 行尾</span><br><span class="line">i 在当前位置生前插入</span><br><span class="line">I 在当前行首插入</span><br><span class="line">a 在当前位置后插入</span><br><span class="line">A 在当前行尾插入</span><br><span class="line">o 在当前行之后插入一行</span><br><span class="line">O 在当前行之前插入一行</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">:w 保存文件但不退出vi</span><br><span class="line">:w file 将修改另外保存到file中，不退出vi</span><br><span class="line">:w! 强制保存，不推出vi</span><br><span class="line">:wq 保存文件并退出vi</span><br><span class="line">:wq! 强制保存文件，并退出vi</span><br><span class="line">q: 不保存文件，退出vi</span><br><span class="line">:q! 不保存文件，强制退出vi</span><br><span class="line">:e! 放弃所有修改，从上次保存文件开始再编辑</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;text　　查找text，按n健查找下一个，按N健查找前一个。</span><br><span class="line">?text　　查找text，反向查找，按n健查找下一个，按N健查找前一个。</span><br></pre></td></tr></table></figure>
         </div>
 
         
@@ -218,7 +143,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="http://example.com/2020/12/10/hello-world/">http://example.com/2020/12/10/hello-world/</a></span>
+                        <span><a href="http://example.com/2020/11/27/vim/">http://example.com/2020/11/27/vim/</a></span>
                     </p>
                 
                 
@@ -251,8 +176,10 @@
         </section>
         <section class="post-nav">
             
+                <a class="prev" rel="prev" href="/2020/11/27/xdebug/">php7.2 安装 xdebug 2.7</a>
             
-            <a class="next" rel="next" href="/2020/12/09/php%E6%95%B0%E7%BB%84%E6%80%BB%E7%BB%93/">php 数组总结</a>
+            
+            <a class="next" rel="next" href="/2020/11/17/mysql-index/">mysql 索引</a>
             
         </section>
 

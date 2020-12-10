@@ -12,7 +12,7 @@
 
 
 
-<title>Hello World | Hexo</title>
+<title>开启 php-fpm 状态页 | Hexo</title>
 
 
 
@@ -173,7 +173,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">Hello World</h1>
+            <h1 class="post-title">开启 php-fpm 状态页</h1>
             
                 <div class="post-meta">
                     
@@ -182,28 +182,46 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">December 10, 2020&nbsp;&nbsp;13:52:19</a>
+                        Date: <a href="#">December 4, 2020&nbsp;&nbsp;21:02:10</a>
                         </span>
                     
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/php/">php</a>
+                            
+                        </span>
                     
                 </div>
             
         </header>
 
         <div class="post-content">
-            <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+            <p>php-fpm 内建了状态也，可以通过该状态也了解和监控 php-fpm 的情况 </p>
+<h4 id="1-php-fpm"><a href="#1-php-fpm" class="headerlink" title="1.php-fpm"></a>1.php-fpm</h4><p>在php-fpm.conf 文件末尾添加配置项 pm.status_path = /status<br>（注意：一定要添加到最后一行，不然会出现错误：unknown entry ‘pm.status_path’）</p>
+<h4 id="2-nginx"><a href="#2-nginx" class="headerlink" title="2.nginx"></a>2.nginx</h4><p>nginx 配置添加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">location ~ ^&#x2F;(status|ping)$ &#123;</span><br><span class="line">    fastcgi_pass   127.0.0.1:9000;</span><br><span class="line">    fastcgi_param  SCRIPT_FILENAME $fastcgi_script_name;</span><br><span class="line">    include        fastcgi_params;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<h4 id="3-重启-nginx-和-php-fpm"><a href="#3-重启-nginx-和-php-fpm" class="headerlink" title="3.重启 nginx 和 php-fpm"></a>3.重启 nginx 和 php-fpm</h4><p>生效后浏览器访问  localhost:8080/status  即可看到如下信息：<br>(8080 是我自己的端口)</p>
+<p><img src="/images/img_7.png"> </p>
+<h4 id="4-参数解析"><a href="#4-参数解析" class="headerlink" title="4.参数解析"></a>4.参数解析</h4><ul>
+<li>pool  – fpm池子名称，大多数为www </li>
+<li>process manager  – 进程管理方式,值：static, dynamic or ondemand. dynamic </li>
+<li>start time  – 启动日期,如果reload了php-fpm，时间会更新 </li>
+<li>start since  – 运行时长 </li>
+<li>accepted conn  – 当前池子接受的请求数 </li>
+<li>listen queue  – 请求等待队列，如果这个值不为0，那么要增加FPM的进程数量 </li>
+<li>max listen queue  – 请求等待队列最高的数量 </li>
+<li>listen queue len  – socket等待队列长度 </li>
+<li>idle processes  – 空闲进程数量 </li>
+<li>active processes  – 活跃进程数量 </li>
+<li>total processes  – 总进程数量 </li>
+<li>max active processes  – 最大的活跃进程数量（FPM启动开始算） </li>
+<li>max children reached  - 进程最大数量限制的次数，如果这个数量不为0，那说明你的最大进程数量太小了，请改大一点。</li>
+<li>slow requests  – 启用了php-fpm </li>
+<li>slow-log - 缓慢请求的数量</li>
+</ul>
 
         </div>
 
@@ -218,7 +236,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="http://example.com/2020/12/10/hello-world/">http://example.com/2020/12/10/hello-world/</a></span>
+                        <span><a href="http://example.com/2020/12/04/php-fpm/">http://example.com/2020/12/04/php-fpm/</a></span>
                     </p>
                 
                 
@@ -241,6 +259,14 @@
                 <span>Tag(s):</span>
                 <span class="tag">
                     
+                    
+                        <a href="/tags/%E8%BF%90%E7%BB%B4/"># 运维</a>
+                    
+                        <a href="/tags/php/"># php</a>
+                    
+                        <a href="/tags/php-fpm/"># php-fpm</a>
+                    
+                        
                 </span>
             </div>
             <div>
@@ -251,8 +277,10 @@
         </section>
         <section class="post-nav">
             
+                <a class="prev" rel="prev" href="/2020/12/04/nohup/">nohup 命令</a>
             
-            <a class="next" rel="next" href="/2020/12/09/php%E6%95%B0%E7%BB%84%E6%80%BB%E7%BB%93/">php 数组总结</a>
+            
+            <a class="next" rel="next" href="/2020/11/27/mac/">mac</a>
             
         </section>
 

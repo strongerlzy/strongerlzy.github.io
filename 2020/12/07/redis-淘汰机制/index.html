@@ -12,7 +12,7 @@
 
 
 
-<title>Hello World | Hexo</title>
+<title>redis 的淘汰机制 | Hexo</title>
 
 
 
@@ -173,7 +173,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">Hello World</h1>
+            <h1 class="post-title">redis 的淘汰机制</h1>
             
                 <div class="post-meta">
                     
@@ -182,7 +182,7 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">December 10, 2020&nbsp;&nbsp;13:52:19</a>
+                        Date: <a href="#">December 7, 2020&nbsp;&nbsp;0:24:43</a>
                         </span>
                     
                     
@@ -191,19 +191,20 @@
         </header>
 
         <div class="post-content">
-            <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+            <h4 id="过期策略"><a href="#过期策略" class="headerlink" title="过期策略"></a>过期策略</h4><ul>
+<li>定期删除：每隔100ms 随机抽取一些设置了过期时间的key,检查是否过期，过期直接删除</li>
+<li>惰性删除：在获取某个key 的时候，redis 检查一下，如果该key 设置了过期时间则判断该key的是否过期，过期后直接删除，不返回任何东西</li>
+</ul>
+<h4 id="淘汰机制"><a href="#淘汰机制" class="headerlink" title="淘汰机制"></a>淘汰机制</h4><p>redis 内存块耗尽时，redis会启动淘汰机制，将部分key清掉腾出内存</p>
+<p>6 中数据淘汰策略，可在redis.conf 中配置：maxmemory-policy noeviction</p>
+<ul>
+<li>noeviction：禁止驱逐数据。默认配置都是这个。当内存使用达到阀值的时候，所有引起申请内存的命令都会报错。</li>
+<li>volatile-lru：从设置了过期时间的数据集中挑选最近最少使用的数据淘汰。</li>
+<li>volatile-ttl：从已设置了过期时间的数据集中挑选即将要过期的数据淘汰。</li>
+<li>volatile-random：从已设置了过期时间的数据集中任意选择数据淘汰。</li>
+<li>allkeys-lru：从数据集中挑选最近最少使用的数据淘汰。</li>
+<li>allkeys-random：从数据集中任意选择数据淘汰。<br>当Redis确定好要驱逐某个键值对后，会删除这个数据，并将这个数据变更消息同步到本地和从机。</li>
+</ul>
 
         </div>
 
@@ -218,7 +219,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="http://example.com/2020/12/10/hello-world/">http://example.com/2020/12/10/hello-world/</a></span>
+                        <span><a href="http://example.com/2020/12/07/redis-%E6%B7%98%E6%B1%B0%E6%9C%BA%E5%88%B6/">http://example.com/2020/12/07/redis-%E6%B7%98%E6%B1%B0%E6%9C%BA%E5%88%B6/</a></span>
                     </p>
                 
                 
@@ -241,6 +242,14 @@
                 <span>Tag(s):</span>
                 <span class="tag">
                     
+                    
+                        <a href="/tags/redis/"># redis</a>
+                    
+                        <a href="/tags/%E7%BC%93%E5%AD%98/"># 缓存</a>
+                    
+                        <a href="/tags/nosql/"># nosql</a>
+                    
+                        
                 </span>
             </div>
             <div>
@@ -251,8 +260,10 @@
         </section>
         <section class="post-nav">
             
+                <a class="prev" rel="prev" href="/2020/12/07/%E6%8E%A5%E5%8F%A3%E5%B9%82%E7%AD%89%E6%80%A7%E8%AE%BE%E8%AE%A1/">接口幂等性设计</a>
             
-            <a class="next" rel="next" href="/2020/12/09/php%E6%95%B0%E7%BB%84%E6%80%BB%E7%BB%93/">php 数组总结</a>
+            
+            <a class="next" rel="next" href="/2020/12/04/nohup/">nohup 命令</a>
             
         </section>
 
